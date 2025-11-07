@@ -21,11 +21,14 @@ if not SPOTIFY_CLIENT_ID or not SPOTIFY_CLIENT_SECRET:
 GENIUS_TOKEN = os.getenv('GENIUS_TOKEN')  # Can be None
 
 # Output directory for downloads
-OUTPUT_DIR = Path(os.getenv('OUTPUT_DIR', './downloads'))
+# On Render free tier, use /tmp (ephemeral but writable)
+# On local dev, use ./downloads
+OUTPUT_DIR = Path(os.getenv('OUTPUT_DIR', '/tmp/downloads' if os.getenv('RENDER') else './downloads'))
 OUTPUT_DIR.mkdir(exist_ok=True, parents=True)
 
 # Cache directories
-CACHE_DIR = Path('./cache')
+# On Render free tier, use /tmp (ephemeral but writable)
+CACHE_DIR = Path(os.getenv('CACHE_DIR', '/tmp/cache' if os.getenv('RENDER') else './cache'))
 CACHE_DIR.mkdir(exist_ok=True, parents=True)
 
 # Logging

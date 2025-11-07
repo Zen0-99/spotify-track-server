@@ -15,7 +15,5 @@ services:
         value: "INFO"
       - key: CLEANUP_AFTER_MINUTES
         value: "10"
-    disk:
-      name: downloads
-      mountPath: /opt/render/project/src/downloads
-      sizeGB: 1  # Minimal disk space - files deleted after 10 minutes
+    # Using ephemeral /tmp storage (free tier compatible)
+    # Downloads cleaned up after 10 minutes by cleanup task

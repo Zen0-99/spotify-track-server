@@ -1,8 +1,8 @@
 # Core framework
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
-pydantic==2.5.0
-python-dotenv==1.0.0
+fastapi==0.115.0
+uvicorn[standard]==0.32.1
+pydantic==2.10.3
+python-dotenv==1.0.1
 sse-starlette==1.8.2
 python-multipart==0.0.6
 
@@ -17,16 +17,16 @@ pytubefix==10.2.1
 mutagen==1.47.0
 
 # HTTP & async
-aiohttp==3.9.1
-requests==2.31.0
-aiofiles==23.2.1
+aiohttp==3.11.11
+requests==2.32.3
+aiofiles==24.1.0
 
 # HTML parsing (Genius, Musixmatch, Kworb)
 beautifulsoup4>=4.12.3
 lxml==4.9.3
 
 # String matching (for fuzzy search)
-python-Levenshtein==0.23.0
+python-Levenshtein==0.27.0
 
 # LRC lyrics
 syncedlyrics==1.0.1
