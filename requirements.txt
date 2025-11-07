@@ -1,0 +1,35 @@
+# Core framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+python-dotenv==1.0.0
+sse-starlette==1.8.2
+python-multipart==0.0.6
+
+# Spotify API
+spotipy==2.23.0
+
+# YouTube download
+yt-dlp==2024.11.4
+pytubefix==10.2.1
+
+# Audio metadata
+mutagen==1.47.0
+
+# HTTP & async
+aiohttp==3.9.1
+requests==2.31.0
+aiofiles==23.2.1
+
+# HTML parsing (Genius, Musixmatch, Kworb)
+beautifulsoup4>=4.12.3
+lxml==4.9.3
+
+# String matching (for fuzzy search)
+python-Levenshtein==0.23.0
+
+# LRC lyrics
+syncedlyrics==1.0.1
+
+# Logging
+python-json-logger==2.0.7

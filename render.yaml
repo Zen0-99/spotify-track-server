@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: spotify-track-server
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: SPOTIFY_CLIENT_ID
+        sync: false  # Set in Render dashboard
+      - key: SPOTIFY_CLIENT_SECRET
+        sync: false  # Secret
+      - key: GENIUS_TOKEN
+        sync: false  # Optional
+      - key: LOG_LEVEL
+        value: "INFO"
+      - key: CLEANUP_AFTER_MINUTES
+        value: "10"
+    disk:
+      name: downloads
+      mountPath: /opt/render/project/src/downloads
+      sizeGB: 1  # Minimal disk space - files deleted after 10 minutes
