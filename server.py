@@ -304,11 +304,11 @@ async def _download_task(
             f"YouTube match found (score: {youtube_score}/200)"
         )
         
-        # Step 6-10: Download using PyTube + manual metadata writing
+        # Step 6-10: Download using downloader (tries PyTube first, then yt-dlp fallbacks)
         await progress_tracker.set_progress(download_id, 35, "Downloading audio from YouTube...")
         logger.info(f"📥 [{download_id}] Downloading: {youtube_url}")
         
-        # Download using PyTube downloader directly
+        # Download using downloader._download_audio (has yt-dlp fallbacks)
         temp_output = OUTPUT_DIR / f"temp_{download_id}"
         temp_output.mkdir(exist_ok=True)
         
@@ -317,15 +317,16 @@ async def _download_task(
             loop = asyncio.get_event_loop()
             loop.create_task(progress_tracker.set_progress(download_id, percent, message))
         
-        audio_file = pytube_downloader.download_audio(
+        # Use downloader's _download_audio which has pytubefix + yt-dlp fallbacks
+        audio_file = downloader._download_audio(
             youtube_url,
-            temp_output,
-            f"{metadata['title']} - {metadata['artists'][0]}",
+            f"{metadata['title']}",
+            metadata['artists'][0],
             download_progress
         )
         
         if not audio_file or not audio_file.exists():
-            raise Exception("Audio download failed")
+            raise Exception("Audio download failed - all methods exhausted")
         
         await progress_tracker.set_progress(download_id, 70, f"Downloaded: {audio_file.name}")
         logger.info(f"📦 Downloaded: {audio_file.name} ({audio_file.stat().st_size:,} bytes)")
