@@ -318,7 +318,7 @@ async def _download_task(
             loop.create_task(progress_tracker.set_progress(download_id, percent, message))
         
         # Use downloader's _download_audio which has pytubefix + yt-dlp fallbacks
-        audio_file = downloader._download_audio(
+        audio_file = track_downloader._download_audio(
             youtube_url,
             f"{metadata['title']}",
             metadata['artists'][0],
