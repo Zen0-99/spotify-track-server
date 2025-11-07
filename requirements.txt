@@ -12,6 +12,7 @@ spotipy>=2.23.0
 # YouTube download
 yt-dlp>=2024.11.0
 pytubefix>=10.2.0
+ytmusicapi>=1.8.0
 
 # Audio metadata
 mutagen>=1.47.0
