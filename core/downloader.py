@@ -275,10 +275,24 @@ class TrackDownloader:
         # Try yt-dlp methods
         download_methods = [
             {
+                'name': 'Mobile web client (yt-dlp)',
+                'opts': {
+                    **base_opts,
+                    'extractor_args': {'youtube': {'player_client': ['mweb', 'web']}},
+                }
+            },
+            {
                 'name': 'iOS client (yt-dlp)',
                 'opts': {
                     **base_opts,
                     'extractor_args': {'youtube': {'player_client': ['ios']}},
+                }
+            },
+            {
+                'name': 'Android client (yt-dlp)',
+                'opts': {
+                    **base_opts,
+                    'extractor_args': {'youtube': {'player_client': ['android']}},
                 }
             },
             {
